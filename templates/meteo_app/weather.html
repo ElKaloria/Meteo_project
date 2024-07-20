@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Meteo</title>
+</head>
+<body>
+    <h3>Город {{ city }}</h3>
+    <p>Текущее время  {{ curent_time }} </p>
+    <p>Температура  {{ temperature }} </p>
+    {{ hourly|safe }}
+</body>
+</html>
