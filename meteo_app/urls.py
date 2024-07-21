@@ -4,5 +4,5 @@ from . import views
 app_name = 'meteo_app'
 
 urlpatterns = [
-    path('search', views.meteo_request_view),
+    path('search', views.meteo_request_view, name='meteo_request_view'),
 ]
