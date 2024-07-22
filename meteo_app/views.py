@@ -53,7 +53,7 @@ def meteo_request_view(request):
             if request.user.is_authenticated:
                 new_form = form.save(commit=False)
                 new_form.user = request.user
-                history = UserHistory.objects.filter(user=request.user)
+                history = UserHistory.objects.filter(user=request.user).order_by('-id')
                 new_form.save()
             else:
                 history = []
@@ -63,8 +63,12 @@ def meteo_request_view(request):
                                                               'hourly': hourly_dataframe,
                                                               'history': history})
     else:
-        form = MeteoForm()
-    return render(request, 'meteo_app/city_form.html', {'form': form})
+        if request.user.is_authenticated:
+            last_city = UserHistory.objects.filter(user=request.user).last().city
+        else:
+            last_city = ''
+        form = MeteoForm(initial={'city': last_city})
+    return render(request, 'meteo_app/city_form.html', {'form': form, 'last_city': last_city})
 
 
 def read_history(request):

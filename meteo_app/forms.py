@@ -8,3 +8,4 @@ class MeteoForm(forms.ModelForm):
     class Meta:
         model = UserHistory
         fields = ['city']
+        labels = {'city': 'Город'}
