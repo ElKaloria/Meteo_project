@@ -6,7 +6,14 @@
 </head>
 <body>
     <h3>Город {{ city }}</h3>
-    <p>Температура  {{ temperature }} </p>
+    <p>Температура воздуха в данный момент {{ temperature }} </p>
+    {% if user.is_authenticated %}
+    <h2>История поиска пользователя</h2>
+        {% include "meteo_app/history.html" with history=history %}
+    {% else %}
+        <h2>Авторизуйтесь, чтобы видеть истрию поиска</h2>
+    {% endif %}
+    <h2>Прогноз на день</h2>
     {{ hourly|safe }}
 </body>
 </html>
