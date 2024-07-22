@@ -1,5 +1,10 @@
 from django import forms
 
+from meteo_app.models import UserHistory
 
-class MeteoForm(forms.Form):
-    city = forms.CharField(label='Город', max_length=100)
+
+class MeteoForm(forms.ModelForm):
+
+    class Meta:
+        model = UserHistory
+        fields = ['city']
