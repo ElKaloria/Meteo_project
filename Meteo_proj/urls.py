@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('meteo_app.urls', namespace='meteo_app')),
+    path('api/', include('meteo_app.api.urls', namespace='api')),
     path('admin/', admin.site.urls),
 ]
